@@ -2,7 +2,7 @@
 
 export type Show = {
   title: string,
-  decription: string,
+  description: string,
   year: string,
   imdbID: string,
   trailer: string,
