@@ -543,7 +543,7 @@ html {
     min-width: 300px;
 }
 
-.landing>a {
+.landing>button {
     margin-top: 15px;
     padding: 10px 40px;
     background-color: #333;
