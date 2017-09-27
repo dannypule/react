@@ -2,21 +2,21 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  context: __dirname,
+  context: __dirname, // set the context using __dirname
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './js/ClientApp.jsx'
+    './js/ClientApp.jsx' // entry point of app's code
   ],
-  devtool: 'check-eval-source-map',
+  devtool: 'check-eval-source-map', // sourcemap tool
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
     publicPath: '/public/'
   },
   devServer: {
-    hot: true,
+    hot: true, // hot reload is true
     publicPath: '/public/',
     historyApiFallback: true
   },
@@ -34,12 +34,12 @@ module.exports = {
       {
         enforce: 'pre',
         test: /\.jsx?$/,
-        loader: 'eslint-loader',
-        exclude: '/node_modules'
+        loader: 'eslint-loader', // apply eslint load for js and jsx files
+        exclude: '/node_modules' // exclude node modules folder
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader' // apply babel-loader to js and jsx files
       }
     ]
   }
