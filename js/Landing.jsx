@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
 import type { RouterHistory } from 'react-router-dom';
-import { setSearchTerm, clearSearchTerm } from './actionCreators';
+import { setSearchTerm } from './actionCreators';
 
 class Landing extends Component {
   props: {
@@ -21,7 +21,7 @@ class Landing extends Component {
 
   browseAll = (event: SyntheticEvent) => {
     event.preventDefault();
-    this.props.clearSearchTerm(event);
+    this.props.clearSearchTerm('');
     this.props.history.push('/search'); // history is now injected into every route so no need to use context
   };
 
@@ -51,7 +51,7 @@ const mapDispatchToProps = (dispatch: Function) => ({
     dispatch(setSearchTerm(event.target.value));
   },
   clearSearchTerm: () => {
-    dispatch(clearSearchTerm());
+    dispatch(setSearchTerm(''));
   }
 });
 
