@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addAPIData 1`] = `
+Object {
+  "payload": Object {
+    "description": "Two Soviet intelligence agents pose as a married couple to spy on the American government.",
+    "imdbID": "tt2149175",
+    "poster": "ta.jpg",
+    "rating": "8.6",
+    "title": "The Americans",
+    "trailer": "HjuUkbhsI24",
+    "year": "2013–",
+  },
+  "type": "ADD_API_DATA",
+}
+`;
+
+exports[`setSearchTerm 1`] = `
+Object {
+  "payload": "New York",
+  "type": "SET_SEARCH_TERM",
+}
+`;
