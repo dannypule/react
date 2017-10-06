@@ -1,7 +1,11 @@
 // @flow
 
 import moxios from 'moxios';
-import { setSearchTerm, addAPIData, getAPIDetails } from '../actionCreators';
+import {
+  setSearchTerm,
+  addAPIData,
+  getAPIDetails
+} from '../actionCreators';
 
 const strangerThings = {
   title: 'The Americans',
@@ -22,13 +26,14 @@ test('addAPIData', () => {
   // we need to make sure this is iron clad before testing the thunk
   expect(addAPIData(strangerThings)).toMatchSnapshot(); // leverage snapshot ability
 });
+
 test('getApiDetails', (done: Function) => {
   const dispatchMock = jest.fn(); // pass this in as the dispatch fn and test later if it was called with the correct params
   moxios.withMock(() => {
     getAPIDetails(strangerThings.imdbID)(dispatchMock); // we're testing to see if it's called with the correct params
     moxios.wait(() => {
       // tell moxios to wait
-      const request = moxios.request.mostRecent(); // check if it was called with the right url
+      const request = moxios.requests.mostRecent(); // check if it was called with the right url
       // console.log('**********************');
       // console.log(request);
       request
@@ -38,8 +43,8 @@ test('getApiDetails', (done: Function) => {
           response: strangerThings // respond with strangerThings data - can also test if it had an erorr etc...
         })
         .then(() => {
-          // expect(request.url).toEqual(`http://localhost:3000/${strangerThings.imdbID}`); // testing that the correct api is being called
-          // expect(dispatchMock).toBeCalledWith(addAPIData(strangerThings)); // testing that correct action is being dispatched
+          expect(request.url).toEqual(`http://localhost:3000/${strangerThings.imdbID}`); // testing that the correct api is being called
+          expect(dispatchMock).toBeCalledWith(addAPIData(strangerThings)); // testing that correct action is being dispatched
           done();
         });
     });

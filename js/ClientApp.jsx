@@ -3,6 +3,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 // import Perf from 'react-addons-perf';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
 // window.Perf = Perf; // does not currently work with React fiber
@@ -15,7 +16,12 @@ import App from './App';
 // Perf.printExclusive() --- exclusive of lifecycle methods
 
 const renderApp = () => {
-  render(<App />, document.getElementById('app'));
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+    document.getElementById('app')
+  );
 };
 
 renderApp();
