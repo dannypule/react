@@ -22,7 +22,11 @@ const config = {
     historyApiFallback: true
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      react: 'preact-compat', // give 'preact-compat' when 'react' is imported in js files
+      'react-dom': 'preact-compat' // give 'preact-compat' when 'react-dom' is imported in js files
+    }
   },
   stats: {
     colors: true,
@@ -40,7 +44,8 @@ const config = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader' // apply babel-loader to js and jsx files
+        loader: 'babel-loader', // apply babel-loader to js and jsx files
+        include: [path.resolve('js'), path.resolve('node_modules/preact-compact/src')]
       }
     ]
   }
