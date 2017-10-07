@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = {
+const config = {
   context: __dirname, // set the context using __dirname
   entry: [
     'react-hot-loader/patch', // normally used locally but we're commenting it out since we're server-side rendering locally
@@ -45,3 +45,11 @@ module.exports = {
     ]
   }
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.entry = './js/ClientApp.jsx'; // setup just one entry point
+  config.devtool = false; // this says 'give me no source maps' which is what you want
+  config.plugins = []; // remove plugins for prod build
+}
+
+module.exports = config;
