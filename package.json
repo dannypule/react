@@ -9,6 +9,7 @@
     "watch": "webpack --watch",
     "w": "webpack --watch",
     "dev": "webpack-dev-server",
+    "start": "NODE_ENV=server node server.js",
     "api": "node ratingsAPI.js",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "format": "prettier --write --single-quote --print-width=120 --parser flow --tab-width=2 \"js/**/*.{js, jsx}\""
